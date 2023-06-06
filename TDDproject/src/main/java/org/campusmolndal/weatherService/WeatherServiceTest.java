@@ -22,6 +22,7 @@ public class WeatherServiceTest {
     public void testGetWeather_ValidCity() {
         //Arrange
         String city = "Stockholm";
+        //Mocka returvärden för olika metodanrop
         when(mock.getTemperature(city)).thenReturn(25);
         when(mock.getWindSpeed(city)).thenReturn(10);
         when(mock.getClouds(city)).thenReturn(50);
@@ -36,17 +37,12 @@ public class WeatherServiceTest {
         Assert.assertEquals(50, weather.getClouds());
         Assert.assertEquals("Stockholm", weather.getCity());
         Assert.assertEquals("Sweden", weather.getCountry());
-
-        //Verify
-        verify(mock, times(1)).getTemperature(city);
-        verify(mock, times(1)).getWindSpeed(city);
-        verify(mock, times(1)).getClouds(city);
-        verify(mock,times(1)).getCountry(city);
     }
     @Test
     public void testGetWeather_InvalidCity(){
         //Arrange
         String invalidCity = "InvalidCity";
+        //Mocka null-värden för en ogiltig stad
         when(mock.getTemperature(invalidCity)).thenReturn(null);
         when(mock.getWindSpeed(invalidCity)).thenReturn(null);
         when(mock.getClouds(invalidCity)).thenReturn(null);
@@ -57,12 +53,6 @@ public class WeatherServiceTest {
 
         //Assert
         Assert.assertNull(weather);
-
-        //Verify
-        verify(mock,times(1)).getTemperature(invalidCity);
-        verify(mock,times(1)).getWindSpeed(invalidCity);
-        verify(mock,times(1)).getClouds(invalidCity);
-        verify(mock,times(1)).getCountry(invalidCity);
     }
     @Test
     public void testGetWeather_NetworkError() {

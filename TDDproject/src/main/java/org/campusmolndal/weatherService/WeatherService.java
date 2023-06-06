@@ -1,5 +1,6 @@
 package org.campusmolndal.weatherService;
 public class WeatherService {
+    //Definiera gränssnittet för mockobjektet
     public interface Mock{
         Integer getTemperature(String city);
         Integer getWindSpeed(String city);
@@ -11,6 +12,7 @@ public class WeatherService {
          this.mock = mock;
     }
     public Weather getWeather(String city) {
+         //Hämta väderinformationen från mockobjektet
         Integer temperature = mock.getTemperature(city);
         Integer windSpeed = mock.getWindSpeed(city);
         Integer clouds = mock.getClouds(city);
