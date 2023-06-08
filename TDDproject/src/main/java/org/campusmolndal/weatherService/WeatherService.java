@@ -1,22 +1,16 @@
 package org.campusmolndal.weatherService;
 public class WeatherService {
-    //Definiera gränssnittet för mockobjektet
-    public interface Mock{
-        Integer getTemperature(String city);
-        Integer getWindSpeed(String city);
-        Integer getClouds(String city);
-        String getCountry(String city);
-}
-    private Mock mock;
-     public WeatherService(Mock mock){
-         this.mock = mock;
+    private WeatherAPI weatherAPI;
+     public WeatherService(WeatherAPI weatherAPI){
+         this.weatherAPI = weatherAPI;
     }
     public Weather getWeather(String city) {
-         //Hämta väderinformationen från mockobjektet
-        Integer temperature = mock.getTemperature(city);
-        Integer windSpeed = mock.getWindSpeed(city);
-        Integer clouds = mock.getClouds(city);
-        String country = mock.getCountry(city);
+        //Hämta väderinformationen från mockobjektet
+        Integer temperature = weatherAPI.getTemperature(city);
+        Integer windSpeed = weatherAPI.getWindSpeed(city);
+        Integer clouds = weatherAPI.getClouds(city);
+        String country = weatherAPI.getCountry(city);
+
 
         //Kontrollera om någon av väderna är null
         if (temperature == null || windSpeed == null || clouds == null || city == null || country == null) {
@@ -26,5 +20,6 @@ public class WeatherService {
         //Skapa ett Weather-objekt
         Weather weather =  new Weather(temperature, windSpeed, clouds, city, country);
             return weather;
+
         }
 }
