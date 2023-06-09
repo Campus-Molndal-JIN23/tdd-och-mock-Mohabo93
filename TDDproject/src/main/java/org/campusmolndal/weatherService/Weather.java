@@ -7,6 +7,7 @@ public class Weather {
     private String city;
     private String country;
     public Weather(int temperature, int windSpeed, int clouds, String city, String country) {
+        //Konstruktor som tar emot temperatur, vindhastighet, molnighet, stad och land.
         this.temperature = temperature;
         this.windSpeed = windSpeed;
         this.clouds = clouds;
@@ -14,6 +15,7 @@ public class Weather {
         this.country = country;
     }
 
+    //Metoder som returnerar väderinformation för en stad.
     public int getTemperature() {
         return temperature;
     }

@@ -2,10 +2,11 @@ package org.campusmolndal.weatherService;
 public class WeatherService {
     private WeatherAPI weatherAPI;
      public WeatherService(WeatherAPI weatherAPI){
+         //Konstruktor som tar emot en instans av WeatherAPI och sätter det som en medlemsvariabel.
          this.weatherAPI = weatherAPI;
     }
     public Weather getWeather(String city) {
-        //Hämta väderinformationen från mockobjektet
+        //Hämta väderinformationen från WeatherAPI/Mock
         Integer temperature = weatherAPI.getTemperature(city);
         Integer windSpeed = weatherAPI.getWindSpeed(city);
         Integer clouds = weatherAPI.getClouds(city);
